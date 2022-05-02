@@ -20,10 +20,14 @@ class queryBuilder
        $statement->execute();
     }
     function update($dipendente){
-        $sql = "UPDATE `employees` SET `first_name` = 'gionny', `last_name` = , `hire_date` = {$dipendente['hire_date']} WHERE (`id` = {$dipendente['id']})";
+        $sql = "UPDATE `employees` SET `first_name` = {$dipendente['first_name']}, `last_name` =  {$dipendente['last_name']}, 'birth_date'= {$dipendente['birth_date']}, `hire_date` = {$dipendente['hire_date']},  WHERE (`id` = {$dipendente['id']})";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
     }
     function delete($dipendente){
-
+        $sql = "DELETE FROM employees WHERE `id` = {$dipendente['id']}";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
     }
     
 }
