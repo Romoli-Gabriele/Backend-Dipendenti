@@ -2,15 +2,13 @@
 $config = require "config.php";
 $database= $config["database"];
 
+$first_name = $_REQUEST['first_name'];
+$last_name = $_REQUEST['last_name'];
+$birth_date = $_REQUEST['birth_date'];
+$hire_date = $_REQUEST['hire_date'];
 
-$newTask = [
-    "descrizione"=>$crypt->encrypt($_POST["descrizione"]),
-    "terminata"=>"false"
-];
+$dipendente = new dipentente($first_name, $last_name, $birth_date, $hire_date);
+$query->insertDipendente($dipendente);
 
-$query->insertTask($database["tableName"], $newTask);
-
-$tasks = $query->selectAll($database["tableName"], $database["className"]);
-
-require "views/index.view.php";
+return "added with success";
 
