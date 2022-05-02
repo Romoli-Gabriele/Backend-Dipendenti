@@ -5,9 +5,9 @@ $database= $config["database"];
 if(isset($_REQUEST['page'])){
     $page = $_REQUEST['page'];
 }else{
-    $page = 1;
+    $page = 0;
 }
 
 
-$tasks = $query->selectAll("enployees", dipendente::class, $page);
-return json_encode($tasks);
+$dipendenti = $query->selectAll( dipendente::class, $page);
+return json_encode($dipendenti);
