@@ -8,13 +8,7 @@ class Connection
 
         try {
             
-            return $pdo = new PDO(
-                $database["connection"] .
-                "; dbname=".$database["name"],
-                $database["username"],
-                $database["password"],
-                $database["options"]
-            );
+            return $pdo = new PDO("mysql:host={$database['host']};dbname={$database['name']};port={$database['port']};",$database['username'], $database['password']);
         } catch (PDOException $e) {
             die($e->getMessage());
         }
