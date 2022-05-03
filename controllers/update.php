@@ -4,4 +4,4 @@ $database= $config["database"];
 
 $query->update($dipendente);
 
-return 'updated with success';
+echo 'updated with success';

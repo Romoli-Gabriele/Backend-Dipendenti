@@ -4,4 +4,4 @@ $database= $config["database"];
 
 $query->delete($dipendente);
 
-return 'deleted with success';
+echo 'deleted with success';

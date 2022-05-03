@@ -10,5 +10,5 @@ $hire_date = $_REQUEST['hire_date'];
 $dipendente = new dipentente($first_name, $last_name, $birth_date, $hire_date);
 $query->insertDipendente($dipendente);
 
-return "added with success";
+echo "added with success";
 
