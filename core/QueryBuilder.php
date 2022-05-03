@@ -7,12 +7,9 @@ class dipentente
     public $birth_date;
     public $hire_date;
 
-    public function __construct($first_name, $last_name, $birth_date, $hire_date)
+    public function __construct()
     {
-        $this->first_name = $first_name;
-        $this->last_name = $last_name;
-        $this->birth_date = $birth_date;
-        $this->hire_date = $hire_date;
+        
     }
 }
 
@@ -28,7 +25,8 @@ class queryBuilder
 
     function selectAll($page)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM employees LIMIT {$page}, 10");
+        $sql = "SELECT * FROM employees LIMIT 20 OFFSET {$page}";
+        $statement = $this->pdo->prepare($sql);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, "dipentente");
     }
