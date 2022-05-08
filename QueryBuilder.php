@@ -44,7 +44,7 @@ class queryBuilder
     }
     function update($first_name, $last_name, $gender, $birth_date, $hire_date, $id)
     {
-        $sql = "UPDATE employees SET first_name = '{$first_name}', last_name =  '{$last_name}', birth_date= '{$birth_date}', hire_date = '{$hire_date}', gender = '{$gender}'  WHERE (id = {$id})";
+        $sql = "UPDATE employees SET `first_name` = {$first_name}, `last_name` =  {$last_name}, 'birth_date'= {$birth_date}, `hire_date` = {$hire_date},  WHERE (`id` = {$id})";
         $statement = $this->pdo->prepare($sql);
         try {
             $statement->execute();

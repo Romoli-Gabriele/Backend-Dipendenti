@@ -5,7 +5,6 @@ class router{
         "GET"=>[],
         "POST"=>[],
         "DELETE"=>[],
-        "PUT"=>[],
     ];
 
     static function  load($file){
