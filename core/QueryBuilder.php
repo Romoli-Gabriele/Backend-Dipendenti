@@ -53,9 +53,10 @@ class queryBuilder
             echo "Error: " . $e->getMessage();
         }
     }
-    function delete($dipendente)
+    function delete($id)
     {
-        $sql = "DELETE FROM employees WHERE `id` = {$dipendente->id}";
+        $sql = "DELETE FROM employees WHERE id = {$id}";
+        var_dump($sql);
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
     }
