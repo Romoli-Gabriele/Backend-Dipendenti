@@ -22,9 +22,9 @@ class queryBuilder
         $this->intoClass = "dipendente";
     }
 
-    function selectAll($page)
+    function selectAll($page, $size)
     {
-        $sql = "SELECT * FROM employees LIMIT 20 OFFSET {$page}";
+        $sql = "SELECT * FROM employees LIMIT".$size * $page." OFFSET {$page}";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, "dipentente");
@@ -59,5 +59,13 @@ class queryBuilder
         var_dump($sql);
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
+    }
+    public function ContaPagine()
+    {
+        $tot = 0;
+        $sql = "SELECT COUNT(id) FROM employees";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        return $statement;
     }
 }
