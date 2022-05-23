@@ -6,10 +6,6 @@ class dipentente
     public $last_name;
     public $birth_date;
     public $hire_date;
-
-    public function __construct()
-    {
-    }
 }
 
 class queryBuilder
@@ -24,10 +20,11 @@ class queryBuilder
 
     function selectAll($page, $size)
     {
-        $sql = "SELECT * FROM employees LIMIT".$size * $page." OFFSET {$page}";
+        $limit = $size*$page;
+        $sql = "SELECT * FROM employees LIMIT ".$limit.", $size";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_CLASS, "dipentente");
+        return $statement->fetchAll(PDO::FETCH_CLASS, dipentente::class);
     }
     function insertDipendente($first_name, $last_name, $gender, $birth_date, $hire_date)
     {
